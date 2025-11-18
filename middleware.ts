@@ -7,20 +7,22 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  // Public route -> ga usah redirect
+  // Public route -> lewati saja
   if (isPublicRoute(req)) return;
 
-  const { userId } = await auth();
+  const { userId, redirectToSignIn } = await auth();
 
-  // Private route -> redirect jika belum login
+  // Jika belum login, redirect ke sign-in
   if (!userId) {
-    return (await auth()).redirectToSignIn();
+    return redirectToSignIn();
   }
 });
 
 export const config = {
   matcher: [
+    // Lindungi semua route kecuali assets
     "/((?!_next/static|_next/image|favicon.ico).*)",
+    // Lindungi API route
     "/(api|trpc)(.*)",
   ],
 };
