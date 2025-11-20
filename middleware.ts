@@ -4,6 +4,7 @@ const isPublicRoute = createRouteMatcher([
   "/", 
   "/products(.*)",
   "/all-products(.*)",
+  "/api/inngest(.*)", // Allow Inngest webhook endpoint
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
@@ -26,3 +27,4 @@ export const config = {
     "/(api|trpc)(.*)",
   ],
 };
+
