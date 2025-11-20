@@ -16,11 +16,9 @@ const nextConfig = {
         // Increase minimum cache TTL to reduce optimization requests
         minimumCacheTTL: 60,
     },
-    // Disable Turbopack for production builds to avoid font resolution issues
-    // Vercel will use webpack instead
-    experimental: {
-        // Explicitly disable Turbopack for production
-        turbo: process.env.NODE_ENV === 'production' ? undefined : {},
+    // Set Turbopack root to silence workspace root warning
+    turbopack: {
+        root: process.cwd(),
     },
 };
 
