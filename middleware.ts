@@ -21,10 +21,8 @@ export default clerkMiddleware(async (auth, req) => {
 
 export const config = {
   matcher: [
-    // Lindungi semua route kecuali assets
-    "/((?!_next/static|_next/image|favicon.ico).*)",
-    // Lindungi API route
-    "/(api|trpc)(.*)",
+    // Lindungi semua route kecuali assets dan Inngest webhook
+    "/((?!_next/static|_next/image|favicon.ico|api/inngest).*)",
   ],
 };
 
