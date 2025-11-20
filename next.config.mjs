@@ -13,6 +13,8 @@ const nextConfig = {
                 pathname: '**',
             },
         ],
+        // Increase minimum cache TTL to reduce optimization requests
+        minimumCacheTTL: 60,
     },
 };
 
